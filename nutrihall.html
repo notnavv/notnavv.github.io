@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NutriHall · Aarnav Dharia</title>
+<meta name="description" content="Aarnav Dharia — Statistics and Data Science at UCLA. Things I've built because they interested me and helped someone.">
+<meta name="theme-color" content="#161616">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="name" href="index.html">Aarnav Dharia</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="now.html">Now</a>
+      <a href="writing.html">Writing</a>
+      <a href="resume.html">Resume</a>
+    </nav>
+  </header>
+
+  <div class="page-title">
+    <h1>NutriHall</h1>
+    <p>Dining hall menus, nutrition and hours for 36 universities in one iOS app, with meal recommendations that hit your remaining macros.</p>
+  </div>
+  <div class="links"><a href="https://apps.apple.com/ng/app/nutrihall/id6760919610">App Store ↗</a><span class="meta">Flutter · Firebase · FastAPI · Railway · BigQuery</span></div>
+
+  <div class="stats">
+    <div><strong>650+</strong><span>downloads</span></div>
+    <div><strong>530+</strong><span>users</span></div>
+    <div><strong>36</strong><span>universities</span></div>
+    <div><strong>200+</strong><span>tests</span></div>
+  </div>
+
+  <section>
+  <div class="sec"><h2>What it does</h2></div>
+  <div class="prose">
+    <p>Pick your school and NutriHall shows what every dining hall is serving right now, with full nutrition for each dish. Set your calorie and macro targets, and it recommends dishes and portion sizes that fit what you have left for the day.</p>
+    <ul>
+      <li>Menus, nutrition and hours for 36 universities</li>
+      <li>Meal recommendations built around your remaining macros</li>
+      <li>Meal logging, daily streaks and progress trends</li>
+      <li>Crowd-sourced dining hall wait times</li>
+      <li>An iOS home screen widget</li>
+    </ul>
+  </div>
+  <div class="shots">
+    <img src="images/nutrihall-1.jpg" alt="NutriHall home screen showing calories left, macro targets and UCLA dining halls" loading="lazy">
+    <img src="images/nutrihall-2.jpg" alt="NutriHall goals screen for setting calorie and macro targets" loading="lazy">
+    <img src="images/nutrihall-3.jpg" alt="NutriHall progress screen with calorie and macro trends" loading="lazy">
+  </div>
+  </section>
+
+  <section>
+  <div class="sec"><h2>How it's built</h2></div>
+  <div class="prose">
+    <p>The app is Flutter and Firebase. Menus come from a Python and FastAPI backend running on Railway, which pulls from six different dining platforms through their undocumented APIs. Scraper failures send alerts, GitHub Actions handles the schools that block server IPs, and Crashlytics reports open GitHub issues automatically. It's covered by 117 Flutter tests and 86 pytest tests.</p>
+    <p>For growth, I built an analytics dashboard in Node and React on top of Firebase Analytics data in BigQuery, with SQL for daily and weekly actives, cohort retention and onboarding funnels.</p>
+  </div>
+  </section>
+
+  <section>
+  <div class="sec"><h2>Decisions worth asking about</h2></div>
+  <article class="item">
+    <div class="num">01</div>
+    <div>
+      <div class="top"><h3>Every school gets its own adapter</h3></div>
+      <p>Dining menus don't follow one format, so each school has its own scraper adapter behind a single API. One school changing its site breaks only that school, and adding a new one doesn't touch the others.</p>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="num">02</div>
+    <div>
+      <div class="top"><h3>Confidence intervals on the dashboard</h3></div>
+      <p>Retention and funnel numbers show 95% Wilson intervals, so a small week of users doesn't get read as a real trend.</p>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="num">03</div>
+    <div>
+      <div class="top"><h3>GitHub Actions for blocked schools</h3></div>
+      <p>Some schools block requests from cloud servers, so those menus are fetched by scheduled GitHub Actions jobs instead of the main backend.</p>
+    </div>
+  </article>
+
+  </section>
+
+  <a class="back" href="index.html">← all projects</a>
+
+  <footer>
+    <a href="mailto:adharia9@ucla.edu">adharia9@ucla.edu</a>
+    <a href="https://github.com/notnavv">GitHub</a>
+    <a href="https://www.linkedin.com/in/aarnavdharia">LinkedIn</a>
+  </footer>
+
+</div>
+</body>
+</html>
